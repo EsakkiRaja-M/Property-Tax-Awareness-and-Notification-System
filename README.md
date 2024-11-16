@@ -10,6 +10,7 @@
   <li><a href="#modules-overview">Modules Overview</a></li>
   <li><a href="#installation">Installation</a></li>
   <li><a href="#usage">Usage</a></li>
+  <li><a href="#junit-testing">JUnit Testing</a></li>
   <li><a href="#technologies-used">Technologies Used</a></li>
   <li><a href="#future-enhancements">Future Enhancements</a></li>
   <li><a href="#license">License</a></li>
@@ -26,6 +27,7 @@
   <li><strong>Property Details Management:</strong> Admins can view and manage property details based on city zones.</li>
   <li><strong>Tax Calculation:</strong> Built-in tax calculation for both admins and users, ensuring accuracy and transparency.</li>
   <li><strong>Guest Access:</strong> Provides general information about property taxes and their importance for municipal development.</li>
+  <li><strong>JUnit Testing:</strong> Admin login functionality is tested using JUnit to ensure reliability and robustness.</li>
   <li><strong>Centralized Dashboard:</strong> An intuitive home page for selecting roles (Admin, User, Guest) and navigating the system.</li>
 </ul>
 
@@ -38,7 +40,7 @@
   <li><strong>Login:</strong> Secure authentication for administrators.</li>
   <li><strong>New Admin Registration:</strong> Allows adding new admin users to the system.</li>
   <li><strong>View Property Details:</strong> Filter and view property details categorized by city zones.</li>
-  <li><strong>Tax Calculation:</strong> Calculate property tax based on property details.</li>
+  <li><strong>Tax Calculation:</strong> Calculate property tax for specific properties.</li>
   <li><strong>Email Notifications:</strong> Send property tax awareness emails to registered users through SMTP.</li>
   <li><strong>Home Page:</strong> Centralized navigation for admin-specific tasks.</li>
 </ul>
@@ -77,7 +79,7 @@
 <h3>Setup Steps</h3>
 <ol>
   <li>Clone the repository:
-    <pre><code>git clone https://github.com/your-username/property-tax-awareness.git</code></pre>
+    <pre><code>git clone https://github.com/EsakkiRaja-M/Property-Tax-Awareness-and-Notification-System.git</code></pre>
   </li>
   <li>Import the project into your preferred Java IDE.</li>
   <li>Set up the MySQL database:
@@ -95,29 +97,42 @@
 
 <h2 id="usage">Usage</h2>
 
-<h3>Admin Workflow:</h3>
-<ol>
-  <li>Login using admin credentials.</li>
-  <li>View and manage property details by zones.</li>
-  <li>Calculate property tax for specific properties.</li>
-  <li>Send awareness emails to registered users through the email module.</li>
-</ol>
-
-<h3>User Workflow:</h3>
-<ol>
-  <li>Register as a new user or log in to an existing account.</li>
-  <li>Add property details for tax calculation.</li>
-  <li>View calculated property tax based on submitted details.</li>
-</ol>
-
-<h3>Guest Workflow:</h3>
-<ol>
-  <li>Access the guest role from the home page.</li>
-  <li>Explore the awareness page to learn about property taxes.</li>
-  <li>View general information about property tax and compliance.</li>
-</ol>
+<p>For detailed workflows, refer to the respective sections under the <strong>Modules Overview</strong>.</p>
 
 <p>For screenshots and visual details, please refer to the <strong>"screenshots"</strong> folder in the repository.</p>
+
+<hr>
+
+<h2 id="junit-testing">JUnit Testing</h2>
+
+<h3>Testing Admin Login</h3>
+<p>JUnit testing has been implemented to validate the functionality and reliability of the admin login page.</p>
+
+<h3>Steps to Perform JUnit Testing in NetBeans:</h3>
+<ol>
+  <li>Right-click on the project in NetBeans and select <strong>New &gt; Test for Existing Class</strong>.</li>
+  <li>Choose the class you want to test, such as <code>AdminLogin.java</code>.</li>
+  <li>NetBeans will generate a test class (e.g., <code>AdminLoginTest.java</code>).</li>
+  <li>Add test cases to the generated test class. For example:
+    <pre><code>
+    @Test
+    public void testValidLogin() {
+        AdminLogin login = new AdminLogin();
+        boolean result = login.authenticate("admin", "password123");
+        assertTrue(result);
+    }
+
+    @Test
+    public void testInvalidLogin() {
+        AdminLogin login = new AdminLogin();
+        boolean result = login.authenticate("wrongUser", "wrongPassword");
+        assertFalse(result);
+    }
+    </code></pre>
+  </li>
+  <li>Right-click on the test class and select <strong>Test File</strong> to run the test cases.</li>
+  <li>Check the test results in the NetBeans output window to ensure all test cases pass successfully.</li>
+</ol>
 
 <hr>
 
@@ -125,6 +140,7 @@
 
 <ul>
   <li><strong>Java:</strong> Backend logic and system implementation.</li>
+  <li><strong>JUnit:</strong> Unit testing framework for validating application logic.</li>
   <li><strong>MySQL:</strong> Database management for storing property and user data.</li>
   <li><strong>SMTP (e.g., Gmail):</strong> For sending email notifications.</li>
   <li><strong>NetBeans/IntelliJ IDEA:</strong> IDE for project development.</li>
